@@ -18,7 +18,9 @@ function preload()
 function setup() {
 	createCanvas(800, 700);
 	rectMode(CENTER);
-	
+
+	engine = Engine.create();
+	world = engine.world;	
 
 	packageSprite=createSprite(width/2, 80, 10,10);
 	packageSprite.addImage(packageIMG)
@@ -32,24 +34,22 @@ function setup() {
 	groundSprite.shapeColor=color(255)
 
 	box1 = new box (350,600,15,100,PI/3.14)
+	box2 = new box (440,600,15,100,PI/3.14)
+	box3 = new box (395,650,100,15,PI/3.14)
 
-	engine = Engine.create();
-	world = engine.world;
 
 var options = {
 		'isStatic': true,
-		'restitution': 1.0
+		'restitution': 0.8
 	}
 
 	packageBody = Bodies.circle(width/2 , 200 , 5 , options);
 	World.add(world, packageBody);
 	
-	
-	
 
 		var options = {
 			'isStatic': true,
-			'restitution': 0.8
+			'restitution': 0.6
 		}
 	
 		packageBody = Bodies.circle(width/2 , 200 , 5 , options);
@@ -73,6 +73,9 @@ function draw() {
   packageSprite.y= packageBody.position.y 
 
   box1.display();
+  box2.display();
+  box3.display();
+
 
   drawSprites();
  
